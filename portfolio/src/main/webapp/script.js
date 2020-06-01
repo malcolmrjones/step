@@ -31,3 +31,11 @@ function displayGreeting(greetingText) {
   greetingContainer.innerText = greetingText;
 }
 
+function fetchComments() {
+  const commentsPromise = fetch("/data")
+  commentsPromise
+  .then(response => response.json())
+  .then(comments => {
+    console.log(comments);
+  });
+}
