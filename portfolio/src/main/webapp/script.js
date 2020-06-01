@@ -36,6 +36,18 @@ function fetchComments() {
   commentsPromise
   .then(response => response.json())
   .then(comments => {
-    console.log(comments);
+    displayComments(comments);
   });
+}
+
+function displayComments(comments) {
+
+  const commentList = document.getElementById("commentlist");
+
+  for(comment of comments) {
+    const commentListItem = document.createElement('li');
+    commentListItem.innerText = comment;
+    commentList.appendChild(commentListItem);
+  }
+
 }
