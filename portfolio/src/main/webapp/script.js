@@ -34,10 +34,10 @@ function displayGreeting(greetingText) {
 function fetchComments() {
   const commentsPromise = fetch("/data")
   commentsPromise
-  .then(response => response.json())
-  .then(comments => {
-    displayComments(comments);
-  });
+    .then(response => response.json())
+    .then(comments => {
+      displayComments(comments);
+    });
 }
 
 function displayComments(comments) {
