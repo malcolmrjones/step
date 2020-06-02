@@ -21,16 +21,29 @@ function addGreeting() {
   greetingPromise.then(handleGreeting);
 }
 
+/**
+ * Functions handles getting the text content of the greeting
+ * @param {Response} response
+ * @return A Promise when get text callback is complete
+ */
 function handleGreeting(response) {
   const greetingTextPromise = response.text();
   greetingTextPromise.then(displayGreeting);
 }
 
+/**
+ * Displays the greeting message to the DOM
+ * @param {string} greetingText
+ * @return A Promise when get text callback is complete
+ */
 function displayGreeting(greetingText) {
   const greetingContainer = document.getElementById('greeting-container');
   greetingContainer.innerText = greetingText;
 }
 
+/**
+ * Makes request to receive all comments from server
+ */
 function fetchComments() {
   const commentsPromise = fetch("/data")
   commentsPromise
@@ -40,6 +53,10 @@ function fetchComments() {
     });
 }
 
+/**
+ * Displays comment by adding each comment to comment list element
+ * @param {string[]} comments 
+ */
 function displayComments(comments) {
   const commentList = document.getElementById("commentlist");
 
