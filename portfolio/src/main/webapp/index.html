@@ -67,7 +67,14 @@
         <div id="greeting-container"></div>
 
         <hr>
+
         <h2>Comments</h2>
+
+        <form action="/data" method="post">
+          <input type="text" name="comment-input"/>
+          <input type="submit" value="COMMENT"/>
+        </form>
+
         <button onclick="fetchComments()">Load Comments</button>
         <ul id="commentlist"></ul>
 
