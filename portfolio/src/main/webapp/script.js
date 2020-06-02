@@ -18,7 +18,6 @@
 function addGreeting() {
   const greetingPromise = fetch("/data");
   greetingPromise.then(handleGreeting);
-  
 }
 
 function handleGreeting(response) {
@@ -41,7 +40,6 @@ function fetchComments() {
 }
 
 function displayComments(comments) {
-
   const commentList = document.getElementById("commentlist");
 
   for(comment of comments) {
@@ -49,5 +47,4 @@ function displayComments(comments) {
     commentListItem.innerText = comment;
     commentList.appendChild(commentListItem);
   }
-
 }
