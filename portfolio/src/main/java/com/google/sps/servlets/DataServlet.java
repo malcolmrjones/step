@@ -31,12 +31,11 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
 
-  private ArrayList<String> comments;
+  private ArrayList<String> comments = new ArrayList<String>();
   private DatastoreService datastore;
 
   @Override
   public void init() {
-    comments = new ArrayList<String>();
     comments.add("Wow, this is a great website!");
     comments.add("I enjoyed the pictures that you shared.");
     comments.add("The tech that you use is awesome!");
