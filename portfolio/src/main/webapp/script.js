@@ -53,7 +53,7 @@ function fetchComments() {
 
 /**
  * Displays comment by adding each comment to comment list element
- * @param {string[]} comments 
+ * @param {!Array<string>} comments 
  */
 function displayComments(comments) {
   const commentList = document.getElementById("commentlist");
