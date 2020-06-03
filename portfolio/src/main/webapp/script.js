@@ -18,7 +18,6 @@
 function addGreeting() {
   const greetingPromise = fetch("/data");
   greetingPromise.then(handleGreeting);
-  
 }
 
 /**
@@ -41,3 +40,21 @@ function displayGreeting(greetingText) {
   greetingContainer.innerText = greetingText;
 }
 
+function fetchComments() {
+  const commentsPromise = fetch("/data")
+  commentsPromise
+    .then(response => response.json())
+    .then(comments => {
+      displayComments(comments);
+    });
+}
+
+function displayComments(comments) {
+  const commentList = document.getElementById("commentlist");
+
+  for(comment of comments) {
+    const commentListItem = document.createElement('li');
+    commentListItem.innerText = comment;
+    commentList.appendChild(commentListItem);
+  }
+}
