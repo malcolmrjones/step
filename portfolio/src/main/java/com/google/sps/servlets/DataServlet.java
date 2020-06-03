@@ -18,6 +18,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import com.google.gson.Gson;
 
+import com.google.appengine.api.datastore.DatastoreService;
+import com.google.appengine.api.datastore.DatastoreServiceFactory;
+import com.google.appengine.api.datastore.Entity;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -47,8 +51,20 @@ public class DataServlet extends HttpServlet {
 
   @Override
   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    
+    long timeStamp = System.currentTimeMillis();
+    String authorName = request.getParameter("comment-author");
     String commentContent = request.getParameter("comment-input");
-    comments.add(commentContent);
+
+    
+    Entity commentEntity = new Entity("Comment");
+    commentEntity.setProperty("time", timeStamp);
+    commentEntity.setProperty("author", authorName);
+    commentEntity.setProperty("content", commentContent);
+
+    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+    datastore.put(commentEntity);
+
     response.sendRedirect("/");
   }
 }
