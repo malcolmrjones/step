@@ -22,7 +22,7 @@ function addGreeting() {
 }
 
 /**
- * Functions handles getting the text content of the greeting
+ * Handles getting the text content of the greeting
  * @param {Response} response
  * @return A Promise when get text callback is complete
  */
