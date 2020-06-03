@@ -28,11 +28,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/** Servlet that returns some example content. TODO: modify this file to handle comments data */
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
 
   private ArrayList<String> comments;
+  private DatastoreService datastore;
 
   @Override
   public void init() {
@@ -40,6 +40,8 @@ public class DataServlet extends HttpServlet {
     comments.add("Wow, this is a great website!");
     comments.add("I enjoyed the pictures that you shared.");
     comments.add("The tech that you use is awesome!");
+
+    datastore = DatastoreServiceFactory.getDatastoreService();
   }
 
   @Override
@@ -62,7 +64,6 @@ public class DataServlet extends HttpServlet {
     commentEntity.setProperty("author", authorName);
     commentEntity.setProperty("content", commentContent);
 
-    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     datastore.put(commentEntity);
 
     response.sendRedirect("/");
