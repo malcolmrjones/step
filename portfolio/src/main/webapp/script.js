@@ -58,7 +58,7 @@ function fetchComments() {
 function displayComments(comments) {
   const commentList = document.getElementById("commentlist");
 
-  for(comment of comments) {
+  for (comment of comments) {
     const commentListItem = document.createElement('li');
     commentListItem.innerText = comment;
     commentList.appendChild(commentListItem);
