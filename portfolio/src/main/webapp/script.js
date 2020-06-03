@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+
 /**
  * Adds a random greeting to the page.
  */
@@ -40,6 +41,9 @@ function displayGreeting(greetingText) {
   greetingContainer.innerText = greetingText;
 }
 
+/**
+ * Makes request to receive all comments from server
+ */
 function fetchComments() {
   const commentsPromise = fetch("/data")
   commentsPromise
@@ -49,6 +53,10 @@ function fetchComments() {
     });
 }
 
+/**
+ * Displays comment by adding each comment to comment list element
+ * @param {string[]} comments 
+ */
 function displayComments(comments) {
   const commentList = document.getElementById("commentlist");
 
