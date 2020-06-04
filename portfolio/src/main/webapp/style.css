@@ -10,6 +10,7 @@ body {
 #sidebar {
   background-color: #CDDDDD;
   width: 30%;
+  height: fit-content;
   padding: 2em;
 
   text-align: center;
@@ -46,4 +47,24 @@ nav ol li {
 .content-card h2 {
   font-size: 2.5rem;
   margin-bottom: 2rem;
+}
+
+#project-list {
+  list-style: none;
+}
+
+.project-card {
+  margin-bottom: 2rem;
+}
+
+.project-card h3 {
+  font-size: 1.75rem;
+}
+
+.project-card h4 {
+  font-size: 1.50rem;
+}
+
+.project-card p {
+  font-size: 1.25rem;
 }
