@@ -46,7 +46,7 @@ function displayGreeting(greetingText) {
  */
 function fetchComments() {
   const commentsPromise = fetch("/data?" + "comment-count=" + document.getElementById("comment-count").value) 
-  
+
   commentsPromise
     .then(response => response.json())
     .then(displayComments);
@@ -69,4 +69,11 @@ function displayComments(comments) {
     commentListItem.innerText = comment;
     commentList.appendChild(commentListItem);
   }
+}
+
+function removeAllComments() {
+  const request = new Request("/delete-data", { method: "POST" });
+  const removeCommentsPromise = fetch(request);
+
+  removeCommentsPromise.then(fetchComments);
 }
