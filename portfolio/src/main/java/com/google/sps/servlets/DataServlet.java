@@ -36,10 +36,6 @@ public class DataServlet extends HttpServlet {
 
   @Override
   public void init() {
-    comments.add("Wow, this is a great website!");
-    comments.add("I enjoyed the pictures that you shared.");
-    comments.add("The tech that you use is awesome!");
-
     datastore = DatastoreServiceFactory.getDatastoreService();
   }
 
