@@ -13,6 +13,10 @@ body {
   padding: 2em;
 }
 
+.title {
+  font-size: 4rem;
+}
+
 #content {
   background-color: blue;
   width: 45%;
