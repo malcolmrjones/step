@@ -45,7 +45,8 @@ function displayGreeting(greetingText) {
  * Makes request to receive all comments from server
  */
 function fetchComments() {
-  const commentsPromise = fetch("/data?comment-count=3");
+  const commentsPromise = fetch("/data?" + "comment-count=" + document.getElementById("comment-count").value) 
+  
   commentsPromise
     .then(response => response.json())
     .then(displayComments);
