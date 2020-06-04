@@ -22,7 +22,7 @@ function addGreeting() {
 }
 
 /**
- * Functions handles getting the text content of the greeting
+ * Handles getting the text content of the greeting
  * @param {Response} response
  * @return A Promise when get text callback is complete
  */
@@ -48,19 +48,17 @@ function fetchComments() {
   const commentsPromise = fetch("/data")
   commentsPromise
     .then(response => response.json())
-    .then(comments => {
-      displayComments(comments);
-    });
+    .then(displayComments);
 }
 
 /**
  * Displays comment by adding each comment to comment list element
- * @param {string[]} comments 
+ * @param {!Array<string>} comments 
  */
 function displayComments(comments) {
   const commentList = document.getElementById("commentlist");
 
-  for(comment of comments) {
+  for (comment of comments) {
     const commentListItem = document.createElement('li');
     commentListItem.innerText = comment;
     commentList.appendChild(commentListItem);
