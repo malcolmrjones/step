@@ -71,6 +71,9 @@ function displayComments(comments) {
   }
 }
 
+/**
+ * Sends request to remove all comments
+ */
 function removeAllComments() {
   const request = new Request("/delete-data", { method: "POST" });
   const removeCommentsPromise = fetch(request);
