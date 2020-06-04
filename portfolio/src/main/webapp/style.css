@@ -5,10 +5,13 @@ body {
   padding: 5rem 10rem;
   justify-content: space-around;
 
+  background-color: #403233;
+
 }
 
 #sidebar {
-  background-color: #CDDDDD;
+  background-color: #577590;
+  color: #CDDDDD;
   width: 30%;
   height: fit-content;
   padding: 2em;
@@ -45,8 +48,14 @@ nav ol li {
 }
 
 .content-card h2 {
-  font-size: 2.5rem;
+  font-size: 3rem;
   margin-bottom: 2rem;
+}
+
+.about-paragraph {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  line-height: 1.25;
 }
 
 #project-list {
