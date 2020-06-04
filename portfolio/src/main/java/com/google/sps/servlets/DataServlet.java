@@ -52,12 +52,10 @@ public class DataServlet extends HttpServlet {
 
   @Override
   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    
     long timeStamp = System.currentTimeMillis();
     String authorName = request.getParameter("comment-author");
     String commentContent = request.getParameter("comment-input");
 
-    
     Entity commentEntity = new Entity("Comment");
     commentEntity.setProperty("time", timeStamp);
     commentEntity.setProperty("author", authorName);
