@@ -3,7 +3,6 @@ body {
   flex-direction: row;
 
   padding: 5rem 10rem;
-  justify-content: space-around;
 
   background-color: #403233;
 
@@ -17,6 +16,8 @@ body {
   padding: 2em;
 
   text-align: center;
+  position: fixed;
+  left: 10%;
 }
 
 .title {
@@ -39,6 +40,8 @@ nav ol li {
 #content {
   width: 45%;
   padding: 0 5rem;
+  position: relative;
+  left: 45%;
 }
 
 .content-card {
