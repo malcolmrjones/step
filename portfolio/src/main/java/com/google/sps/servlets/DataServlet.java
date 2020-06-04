@@ -34,7 +34,6 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
 
-  private ArrayList<String> comments = new ArrayList<String>();
   private DatastoreService datastore;
 
   @Override
@@ -44,6 +43,7 @@ public class DataServlet extends HttpServlet {
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    ArrayList<String> comments = new ArrayList<String>();
     Query queryAllComments = new Query("Comment").addSort("time", SortDirection.DESCENDING);
     PreparedQuery results = datastore.prepare(queryAllComments);
     
@@ -70,6 +70,6 @@ public class DataServlet extends HttpServlet {
 
     datastore.put(commentEntity);
 
-    response.sendRedirect("/");
+    response.sendRedirect("/index.html");
   }
 }
