@@ -11,6 +11,8 @@ body {
   background-color: red;
   width: 30%;
   padding: 2em;
+
+  text-align: center;
 }
 
 .title {
