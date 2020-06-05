@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+var imageIndex = 1;
 
 /**
  * Adds a random greeting to the page.
@@ -79,4 +80,34 @@ function deleteAllComments() {
   const removeCommentsPromise = fetch(request);
 
   removeCommentsPromise.then(fetchComments);
+}
+
+/**
+ * Changes source of gallery image view to the next image
+ */
+function nextImage() {
+  if (imageIndex < 24) {
+    imageIndex += 1;
+  }
+  else {
+    imageIndex = 1;
+  }
+
+  const imageView = document.getElementById("image-view");
+  imageView.src = "images/gallery/pic-" + imageIndex + ".jpg";
+}
+
+/**
+ * Changes source of gallery image view to the previous image
+ */
+function prevImage() {
+  if (imageIndex > 1) {
+    imageIndex -= 1;
+  }
+  else {
+    imageIndex = 24;
+  }
+
+  const imageView = document.getElementById("image-view");
+  imageView.src = "images/gallery/pic-" + imageIndex + ".jpg";
 }

@@ -2,7 +2,7 @@ body {
   display: flex;
   flex-direction: row;
 
-  padding: 5rem 10rem;
+  padding: 4rem 10rem;
 
   background-color: #403233;
 }
@@ -18,7 +18,6 @@ p {
   text-align: center;
   position: fixed;
   left: 10%;
-  border-radius: 8px;
 }
 
 #navigation {
@@ -26,6 +25,7 @@ p {
   color: black;
   height: fit-content;
   padding: 2em;
+  border-radius: 8px;
 }
 
 #connection {
@@ -33,11 +33,15 @@ p {
   color: black;
   padding: 2em;
   margin-top :2em;
+  border-radius: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 #connection a {
   padding: 1rem 2rem;
-  margin: 0rem 2rem;
+  margin: 0.25rem 2rem;
   font-weight: bold;
   text-decoration: none;
 }
@@ -141,6 +145,19 @@ nav a:hover {
   font-weight: bold;
 }
 
+.gallery-img {
+  max-width: 800px;
+  height: 40%;
+  max-height: 600px;
+}
+
+#next-btn, #prev-btn {
+  padding: 1rem 2rem;
+  font-size: 1.5rem;
+}
+
+
+
 .comment-area {
   display: grid;
   grid-template-columns: repeat(3, auto);
@@ -149,7 +166,7 @@ nav a:hover {
 
 .comment-area input[type=text], input[type=number] {
   font-size: 1.25rem;
-  padding: 1em;
+  padding: 0.25em;
 }
 
 .comment-area textarea {
@@ -186,16 +203,25 @@ nav a:hover {
 .comment-area input[type=submit] {
   grid-row: 3 / 4;
   grid-column: 1 / 2;
+  margin-bottom: 4rem;
+  background-color: #0FC245;
+  color: white;
+  font-weight: bold;
+  font-size: 1.25;
+  padding: 1rem;
 }
 
 #load-comments-button {
   grid-row: 4 / 5;
   grid-column: 1 / 2;
+  justify-self: start;
+  align-items: center;
 }
 
 #comment-count-label {
   grid-row: 4 / 5;
   grid-column: 2 / 3;
+  margin-right: 1rem;
 }
 
 #comment-count {
@@ -211,4 +237,11 @@ nav a:hover {
 #delete-btn {
   grid-row: 6 / 7;
   grid-column: 1 / 2;
+  justify-self: left;
+  background-color: #f03d3d;
+  color: white;
+  font-weight: bold;
+  font-size: 1.25;
+  padding: 1rem;
+  margin-top: 2rem;
 }
