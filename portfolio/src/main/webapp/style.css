@@ -12,16 +12,44 @@ p {
 }
 
 #sidebar {
-  background-color: #F4EBD9;
-  color: black;
-  width: 20%;
+  width: 25%;
   height: fit-content;
-  padding: 2em;
 
   text-align: center;
   position: fixed;
   left: 10%;
   border-radius: 8px;
+}
+
+#navigation {
+  background-color: #F4EBD9;
+  color: black;
+  height: fit-content;
+  padding: 2em;
+}
+
+#connection {
+  background-color: #F4EBD9;
+  color: black;
+  padding: 2em;
+  margin-top :2em;
+}
+
+#connection a {
+  padding: 1rem 2rem;
+  margin: 0rem 2rem;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.github {
+  background-color: black;
+  color: white;
+}
+
+.linkedin {
+  background-color: #2867B2;
+  color: white;
 }
 
 .title {
