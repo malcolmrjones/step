@@ -58,7 +58,7 @@ function fetchComments() {
 function displayComments(comments) {
   const commentList = document.getElementById("commentlist");
 
-  //Remove all children of comment list to prevent dusplicate display
+  // Remove all children of comment list to prevent dusplicate display
   while (commentList.firstChild) {
     commentList.removeChild(commentList.firstChild);
   }
