@@ -76,6 +76,17 @@ function displayComments(comments) {
  * Sends request to remove all comments
  */
 function deleteAllComments() {
+
+  window.confirm("Are you sure you want to delete all the comments?");
+  
+  var confirmpss = "911b0a07a8cacfebc5f1f45596d67017136c950499fa5b4ff6faffa031f3cec7f197853d1660712c154e1f59c60f682e34ea9b5cbd2d8d5adb0c834f963f30de";
+  var password = window.prompt("Please enter the pasword to confirm you have the POWWEEER to delete ALL COMMENTS!!!!!!!!!!!");
+
+  if (password !== confirmpss) {
+    window.alert("WRONG PASSWORD!");
+    return;
+  }
+
   const request = new Request("/delete-data", { method: "POST" });
   const removeCommentsPromise = fetch(request);
 
