@@ -54,7 +54,7 @@ public class DataServlet extends HttpServlet {
       comments.add(commentContent);
     }
 
-    //Prevent comment count to be over the total number of comments
+    // Prevent comment count to be over the total number of comments
     if (countOfComments > comments.size()) countOfComments = comments.size();
     
     String commentsJson = (new Gson()).toJson(comments.subList(0, countOfComments));
