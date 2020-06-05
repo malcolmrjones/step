@@ -96,8 +96,11 @@
         </form>
 
         <button onclick="fetchComments()">Load Comments</button>
+        <label for="comment-count">Number of comments to display: </label>
+        <input type="number" id="comment-count" name="comment-count" min="1" max="10">
         <ul id="commentlist"></ul>
 
+        <button onclick="deleteAllComments()">Delete All Comments</button>
       </div>
 
   </body>
