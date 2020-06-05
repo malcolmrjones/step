@@ -15,34 +15,6 @@
 var imageIndex = 1;
 
 /**
- * Adds a random greeting to the page.
- */
-function addGreeting() {
-  const greetingPromise = fetch("/data");
-  greetingPromise.then(handleGreeting);
-}
-
-/**
- * Handles getting the text content of the greeting
- * @param {Response} response
- * @return A Promise when get text callback is complete
- */
-function handleGreeting(response) {
-  const greetingTextPromise = response.text();
-  greetingTextPromise.then(displayGreeting);
-}
-
-/**
- * Displays the greeting message to the DOM
- * @param {string} greetingText
- * @return A Promise when get text callback is complete
- */
-function displayGreeting(greetingText) {
-  const greetingContainer = document.getElementById('greeting-container');
-  greetingContainer.innerText = greetingText;
-}
-
-/**
  * Makes request to receive all comments from server
  */
 function fetchComments() {
