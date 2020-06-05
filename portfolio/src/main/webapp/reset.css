@@ -24,6 +24,10 @@ time, mark, audio, video {
 }
 
 * {
-	font-family: "Arial", sans-serif;
+	font-family: 'Roboto', 'Arial', sans-serif;
+}
+
+html {
+	scroll-behavior: smooth;
 }
 
