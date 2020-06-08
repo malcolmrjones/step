@@ -3,106 +3,178 @@
   
   <head>
     <meta charset="UTF-8">
-    <title>My Portfolio</title>
+    <title>Malcolm Jones Portfolio</title>
+    <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
   </head>
 
   <body>
 
+    <div id="sidebar">
+      <div id="navigation">
+        <h1 class="title">Malcolm</h1>
+        <h1 class="title">Jones</h1>
+        <nav>
+          <ol>
+            <li><a href="#about-section" name="gallery-section">About</a></li>
+            <li><a href="#projects-section" name="projects-section">Projects</a></li>
+            <li><a href="#gallery-section" name="gallery-section">Gallery</a></li>
+            <li><a href="#comments-section" name="comments-section">Comments</a></li>
+          </ol>
+        </nav>
+      </div>
+
+      <div id="connection">
+        <a href="https://github.com/malcolmrjones" class="github">Github</a>
+        <a href="https://www.linkedin.com/in/malcolmrjones" class="linkedin">LinkedIn</a>
+      </div>
+    </div>
+
+    
+
     <div id="content">
-        <h1>Malcolm Jones Portfolio</h1>
 
-        <img src="/images/malcolm-1.jpeg" width="500" height="500">
-
-        <h2>About Me</h2>
-        <p>
+      <div class="content-card">
+        <h2 id="about-section">About Me</h2>
+        <img src="images/malcolm-1.jpeg" id="about-img" />
+        <p class="about-paragraph">
           Welcome to my portfolio website! I am Malcolm and I am from 
           Winston-Salem, NC. Currently I am studying computer science at North 
-          Carolina Agricultural and Technical State Universty. 
-          Another passion of mine aside from computer science is the environment
-          and sustainability. My career aspiration is to use my skills and 
-          talents in computer science to solve problems related to the environment
-          and sustainability. Outside of my academics I enjoy going for walks, 
-          reading, and cooking. 
+          Carolina Agricultural and Technical State Universty. My journey in
+          computer science began when I was younger. Growing up, I was an avid 
+          gamer. I loved playing videogames with my brothers and my friends. 
+          When I was 10 years old, my dad gave me a book on videogame development.
+          At that time it never crossed my mine that I could be a person to create
+          the awesome games that I was playing. I was hooked and from then on
+          I would dive into the exciting world of programming and computer 
+          science. Although videogame development was my initial spark 
+          into computer  science I have grown to learn more about the field. 
+          I have learn about different languages and technologies. I have 
+          learned about web development and mobile development. One of the 
+          greatest things I love about computer science is the broadness of the 
+          field and the field that they enjoy.
         </p>
-
-        <h4>Connect with Me</h4>
-        <a href="https://www.linkedin.com/in/malcolmrjones" target="_blank">LinkedIn</a>
-        <a href="https://www.github.com/malcolmrjones" target="_blank">Github</a>
-        
-        <hr>
-
-        <h2>My Projects</h2>
-        <ul>
-          <li>cipes</h3>
+        <p class="about-paragraph">
+          As I mentioned earlier, I am a computer science student at NC A&T. 
+          Along with  my passion in computer science I am also passionate about 
+          the environmentand I am a proponent of sustainbility. I aspire to use 
+          my skills and talents in computer science to solve some of the 
+          greatest challenges concerning the environment. I believe technology 
+          and computer science are a big part of the overall solutions to 
+          solving issues related to the environment. 
+        </p>
+        <p class="about-paragraph">  
+          Outside of my academics I enjoy going for walks, being outside,
+          reading, and cooking. My favorite color is green. My favorite foods 
+          are philly cheesesteak subs and sweet potato fries. My favorite movie
+          franchise is Star Wars. Some of the genres of music I listen to often 
+          are R&B, Lo-Fi, Hip-Hop, and Classical. I also enjoy hanging out 
+          with my friends and being with my family. My friends and I are always 
+          talking about series, movies, or anime we are watching. If not talking
+          about entertainment we are discussing anything thats on our mind or 
+          going on in the world.           
+        </p>
+      </div>
+      
+      <div class="content-card">
+        <h2 id="projects-section">Projects</h2>
+        <ul id="project-list">
+          <li class="project-card">
+            <h3>Pique Recipes</h3>
             <h4>REU - University of North Carolina at Charlotte</h4>
             <p>
               Web app that provides recipe recommendations based off of 
-              ingredient preferences. Tech Stack: HTML, CSS, JavaScript, 
-              Django Web Framework
+              ingredient preferences.
             </p>
+            <p>
+              Tech Stack: HTML, CSS, JavaScript, Django Web Framework 
+            </p>
+            <a href="https://www.linkedin.com/posts/malcolmrjones_after-9-weeks-
+            of-research-for-the-making-activity-6561042747594199040-qzDP">
+              Learn More
+            </a>
           </li>
-          <li>
-            <h3>Pomoro</h3>
+          <li class="project-card">
+            <h3>Pomoro</a></h3>
             <h4>Personal Project</h4>
             <p>
               Online timer for using the pomodoro technique. It focuses on 
-              simplicity and usability. Tech Stack: HTML, CSS, JavaScript, Vue.js
+              simplicity and usability. 
             </p>
+            <p>
+              Tech Stack: HTML, CSS, JavaScript, Vue.js
+            </p>
+            <a href="https://github.com/malcolmrjones/pomoro">Learn More</a>
           </li>
-          <li>
+          <li class="project-card">
             <h3>BBConnection</h3>
             <h4>Hackathon - HackNCAT 2018</h4>
             <p>
               Web platform that connects small and medium black-owned 
-              businesses with opportunities. Tech Stack: HTML, CSS, JavaScript
+              businesses with opportunities. 
+            </p>
+            <p>
+              Tech Stack: HTML, CSS, JavaScript
             </p>
           </li>
-          <li>
+          <li class="project-card">
             <h3>Rolisto</h3>
             <h4>Personal Project</h4>
             <p>
-              Web app to create and manage task and to-do lists. 
+              Web app to create and manage task lists and to-do lists. 
+            </p>
+            <p>
               Tech Stack: HTML, CSS, JavaScript, Angular, Firebase Firestore
             </p>
           </li>
-          <li>
+          <li class="project-card">
             <h3>Roobeks Timer</h3>
             <h4>Personal Project</h4>
             <p>
               Easy to use timer and tool for Rubik's Cube solves. 
+            </p>
+            <p>
               Tech Stack: HTML, CSS, JavaScript
             </p>
+            <a href="https://github.com/malcolmrjones/RoobeksTimer">Learn More</a>
           </li>
         </ul>
-
-        <hr>
-
-
-        <p>Click the button below to receive a warm greeting!</p>
-        <button onclick="addGreeting()">Greet Me</button>
-        <div id="greeting-container"></div>
-
-        <hr>
-
-        <h2>Comments</h2>
-
-        <form action="/data" method="post">
-          <label for="comment-author">Name: </label>
-          <input type="text" name="comment-author"/>
-          <input type="text" name="comment-input"/>
-          <input type="submit" value="COMMENT"/>
-        </form>
-
-        <button onclick="fetchComments()">Load Comments</button>
-        <label for="comment-count">Number of comments to display: </label>
-        <input type="number" id="comment-count" name="comment-count" min="1" max="10">
-        <ul id="commentlist"></ul>
-
-        <button onclick="deleteAllComments()">Delete All Comments</button>
+      </div>
+      
+      <div class="content-card">
+        <h2 id="gallery-section">Gallery</h2>
+        <img src="images/gallery/pic-1.jpg" id="gallery-img" />
+        <br>
+        <button onclick="prevImage()" id="prev-button"> Previous</button>
+        <button onclick="nextImage()" id="next-button"> Next</button>
       </div>
 
+      <div class="content-card">
+        <h2 id="comments-section">Comments</h2>
+        
+        <div class="comment-area">
+          <form action="/data" method="post">
+            <label for="comment-author" id="comment-author-label">Name: </label>
+            <input type="text" name="comment-author" id="comment-author"/>
+            <textarea name="comment-input" id="comment-input"></textarea>
+            <input type="submit" value="COMMENT"/>
+          </form>
+
+          <button onclick="fetchComments()" id="load-comments-button">
+            Load Comments
+          </button>
+          <label for="comment-count" id="comment-count-label">
+            Number of comments to display: 
+          </label>
+          <input type="number" id="comment-count" name="comment-count" 
+          min="1" max="10" value="5">
+          <ul id="comment-list"></ul>
+
+          <button onclick="deleteAllComments()" id="delete-button">Delete All Comments</button>
+        </div>
+      </div>
+        
   </body>
 
 </html>

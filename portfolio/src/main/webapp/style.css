@@ -1,9 +1,246 @@
-#content {
-  margin-left: auto;
-  margin-right: auto;
-  width: 650px;
+body {
+  display: flex;
+  flex-direction: row;
+
+  padding: 4rem 10rem;
+
+  background-color: #403233;
 }
 
-#greeting-container {
-  margin-top: 20px;
+p {
+  font-weight: 350;
+}
+
+#sidebar {
+  width: 25%;
+  height: fit-content;
+
+  text-align: center;
+  position: fixed;
+  left: 10%;
+}
+
+#navigation {
+  background-color: #F4EBD9;
+  color: black;
+  height: fit-content;
+  padding: 2em;
+  border-radius: 8px;
+}
+
+#connection {
+  background-color: #F4EBD9;
+  color: black;
+  padding: 2em;
+  margin-top: 2em;
+  border-radius: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#connection a {
+  padding: 1rem 2rem;
+  margin: 0.25rem 2rem;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.github {
+  background-color: black;
+  color: white;
+}
+
+.linkedin {
+  background-color: #2867B2;
+  color: white;
+}
+
+.title {
+  font-size: 3rem;
+}
+
+nav {
+  margin: 2.5rem 0;
+}
+
+nav ol {
+  list-style: none;
+  font-size: 2rem;
+}
+
+nav ol li {
+  margin: 1rem 0;
+  font-weight: bold;
+}
+
+nav a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.5s ease;
+}
+
+nav a:hover {
+  color: #B33951;
+}
+
+#content {
+  width: 60%;
+  padding: 0 5rem;
+  position: relative;
+  left: 35%;
+}
+
+.content-card {
+  margin-bottom: 2rem;
+  padding: 4rem;
+  background-color: #DEC691;
+  height: fit-content;
+  border-radius: 8px;
+}
+
+.content-card h2 {
+  font-size: 3rem;
+  margin-bottom: 2.5rem;
+}
+
+.about-paragraph {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  line-height: 1.25;
+}
+
+#about-img {
+  float: right;
+  width: 50%;
+  height: auto;
+  margin: 0 0 1rem 2rem;
+  border-radius: 4px;
+}
+
+#project-list {
+  list-style: none;
+}
+
+.project-card {
+  margin-bottom: 2rem;
+}
+
+.project-card h3 {
+  font-size: 2rem;
+}
+
+.project-card h4 {
+  font-size: 1.50rem;
+}
+
+.project-card p {
+  font-size: 1.25rem;
+}
+
+.project-card a {
+  text-decoration: none;
+  color: #B33951;
+  font-weight: bold;
+}
+
+#gallery-img {
+  max-width: 800px;
+  height: 40%;
+  max-height: 600px;
+}
+
+#next-button, #prev-button {
+  padding: 1rem 2rem;
+  font-size: 1.5rem;
+}
+
+.comment-area {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  grid-template-rows: repeat(6, auto);
+}
+
+.comment-area input[type=text], input[type=number] {
+  font-size: 1.25rem;
+  padding: 0.25em;
+}
+
+.comment-area textarea {
+  resize: none;
+  width: 100%;
+  height: 200px;
+  font-size: 1.25rem;
+  padding: 1em;
+
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.comment-area label {
+  font-size: 1.5rem;
+}
+
+#comment-author-label {
+  grid-row: 1 / 2;
+  grid-column: 1 / 2;
+}
+
+#comment-author {
+  grid-row: 1 / 2;
+  grid-column: 2 / 3;
+}
+
+#comment-input {
+  grid-row: 2 / 3;
+  grid-column: 1 / 2;
+}
+
+.comment-area input[type=submit] {
+  grid-row: 3 / 4;
+  grid-column: 1 / 2;
+  margin-bottom: 4rem;
+  background-color: #0FC245;
+  color: white;
+  font-weight: bold;
+  font-size: 1.25;
+  padding: 1rem;
+}
+
+#load-comments-button {
+  grid-row: 4 / 5;
+  grid-column: 1 / 2;
+  justify-self: start;
+  align-items: center;
+}
+
+#comment-count-label {
+  grid-row: 4 / 5;
+  grid-column: 2 / 3;
+  margin-right: 1rem;
+}
+
+#comment-count {
+  grid-row: 4 / 5;
+  grid-column: 3 / 4;
+}
+
+#comment-list {
+  grid-row: 5 / 6;
+  grid-column: 1 / 2;
+
+  font-size: 1.25rem;
+  margin: 2rem 0rem;
+}
+
+#delete-button {
+  grid-row: 6 / 7;
+  grid-column: 1 / 2;
+  justify-self: left;
+  background-color: #f03d3d;
+  color: white;
+  font-weight: bold;
+  font-size: 1.25;
+  padding: 1rem;
+  margin-top: 2rem;
 }
