@@ -71,13 +71,7 @@ function deleteAllComments() {
  * Changes source of gallery image view to the next image
  */
 function nextImage() {
-  if (imageIndex < 24) {
-    imageIndex += 1;
-  }
-  else {
-    imageIndex = 1;
-  }
-
+  imageIndex = (imageIndex + 1) % 24;
   const imageView = document.getElementById("gallery-img");
   imageView.src = "images/gallery/pic-" + imageIndex + ".jpg";
 }
@@ -86,13 +80,7 @@ function nextImage() {
  * Changes source of gallery image view to the previous image
  */
 function prevImage() {
-  if (imageIndex > 1) {
-    imageIndex -= 1;
-  }
-  else {
-    imageIndex = 24;
-  }
-
-  const imageView = document.getElementById("image-view");
+  imageIndex = (((imageIndex - 1) % 24) + 24) % 24;
+  const imageView = document.getElementById("gallery-img");
   imageView.src = "images/gallery/pic-" + imageIndex + ".jpg";
 }
