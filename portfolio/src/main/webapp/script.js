@@ -36,7 +36,7 @@ function fetchComments() {
  * @param {!Array<string>} comments 
  */
 function displayComments(comments) {
-  const commentList = document.getElementById("commentlist");
+  const commentList = document.getElementById("comment-list");
 
   //Remove all children of comment list to prevent dusplicate display
   while (commentList.firstChild) {
@@ -45,7 +45,7 @@ function displayComments(comments) {
 
   for (comment of comments) {
     const commentListItem = document.createElement('li');
-    commentListItem.innerText = comment;
+    commentListItem.innerText =  comment["authorEmail"] + " --- " + comment["content"];
     commentList.appendChild(commentListItem);
   }
 }
