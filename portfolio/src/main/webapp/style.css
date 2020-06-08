@@ -32,7 +32,7 @@ p {
   background-color: #F4EBD9;
   color: black;
   padding: 2em;
-  margin-top :2em;
+  margin-top: 2em;
   border-radius: 8px;
   display: flex;
   flex-wrap: wrap;
@@ -114,8 +114,7 @@ nav a:hover {
   float: right;
   width: 50%;
   height: auto;
-  margin-left: 2rem;
-  margin-bottom: 1rem;
+  margin: 0 0 1rem 2rem;
   border-radius: 4px;
 }
 
@@ -192,7 +191,6 @@ nav a:hover {
   grid-column: 2 / 3;
 }
 
-
 #comment-input {
   grid-row: 2 / 3;
   grid-column: 1 / 2;
@@ -227,7 +225,7 @@ nav a:hover {
   grid-column: 3 / 4;
 }
 
-#commentlist {
+#comment-list {
   grid-row: 5 / 6;
   grid-column: 1 / 2;
 
@@ -235,7 +233,7 @@ nav a:hover {
   margin: 2rem 0rem;
 }
 
-#delete-btn {
+#delete-button {
   grid-row: 6 / 7;
   grid-column: 1 / 2;
   justify-self: left;
