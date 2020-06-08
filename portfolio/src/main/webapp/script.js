@@ -14,6 +14,12 @@
 
 let imageIndex = 1;
 
+
+window.onload = function() {
+  handleCommentFormVisibility();
+}
+
+
 /**
  * Makes request to receive all comments from server
  */
@@ -83,4 +89,27 @@ function prevImage() {
   imageIndex = (((imageIndex - 1) % 24) + 24) % 24;
   const imageView = document.getElementById("gallery-img");
   imageView.src = "images/gallery/pic-" + imageIndex + ".jpg";
+}
+
+/**
+ * Hides comment form if user is not signed in. Otherwise display user form. 
+ */
+function handleCommentFormVisibility() {
+  
+  const loginStatusPromise = fetch("/login/status");
+  
+  loginStatusPromise
+    .then(response => response.json())
+    .then(loginInfo => {
+      const loginStatus = loginInfo["loginStatus"];
+      const commentForm = document.getElementById("comment-form")
+      if (loginStatus === "true") {
+        commentForm.style.visibility = "visible";
+      }
+      else {
+        commentForm.style.visibility = "hidden";
+      }
+    });
+
+
 }
