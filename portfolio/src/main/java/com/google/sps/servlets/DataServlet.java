@@ -24,6 +24,8 @@ import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.PreparedQuery;
 import com.google.appengine.api.datastore.Query;
 import com.google.appengine.api.datastore.Query.SortDirection;
+import com.google.appengine.api.users.UserService;
+import com.google.appengine.api.users.UserServiceFactory;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -35,10 +37,12 @@ import javax.servlet.http.HttpServletResponse;
 public class DataServlet extends HttpServlet {
 
   private DatastoreService datastore;
+  private UserService userService;
 
   @Override
   public void init() {
     datastore = DatastoreServiceFactory.getDatastoreService();
+    userService = UserServiceFactory.getUserService();
   }
 
   @Override
@@ -72,6 +76,7 @@ public class DataServlet extends HttpServlet {
     commentEntity.setProperty("time", timeStamp);
     commentEntity.setProperty("author", authorName);
     commentEntity.setProperty("content", commentContent);
+    commentEntity.setProperty("email", userService.getCurrentUser().getEmail());
 
     datastore.put(commentEntity);
 
