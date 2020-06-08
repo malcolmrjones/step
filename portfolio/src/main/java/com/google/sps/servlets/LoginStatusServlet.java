@@ -38,7 +38,7 @@ public class LoginStatusServlet extends HttpServlet {
     loginInfo.put("loginStatus", Boolean.toString(userService.isUserLoggedIn()));
     loginInfo.put("loginURL", userService.createLoginURL("/login/status"));
     loginInfo.put("logoutURL", userService.createLogoutURL("/login/status"));
-    
+
     response.setContentType("application/json;");
     response.getWriter().println((new Gson()).toJson(loginInfo));
   }

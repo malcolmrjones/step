@@ -39,6 +39,7 @@ p {
   justify-content: center;
 }
 
+
 #connection a {
   padding: 1rem 2rem;
   margin: 0.25rem 2rem;
@@ -54,6 +55,22 @@ p {
 .linkedin {
   background-color: #2867B2;
   color: white;
+}
+
+#login {
+  background-color: #F4EBD9;
+  color: black;
+  padding: 2em;
+  margin-top: 2em;
+  border-radius: 8px;
+  display: flex;
+}
+
+#login a {
+  padding: 1rem 2rem;
+  margin: 0.25rem 2rem;
+  font-weight: bold;
+  text-decoration: none;
 }
 
 .title {

@@ -17,6 +17,7 @@ let imageIndex = 1;
 
 window.onload = function() {
   handleCommentFormVisibility();
+  initializeAuth();
 }
 
 
@@ -112,4 +113,36 @@ function handleCommentFormVisibility() {
     });
 
 
+}
+
+function initializeAuth() {
+  const loginStatusPromise = fetch("/login/status");
+
+  loginStatusPromise
+    .then(response => response.json())
+    .then(loginInfo => {
+      const loginStatus = loginInfo["loginStatus"];
+      const loginURL = loginInfo["loginURL"];
+      const logoutURL = loginInfo["logoutURL"];
+
+      const authButton = document.getElementById("auth-button");
+      const authGreeting = document.getElementById("auth-greeting");
+
+      if (loginStatus === "true") {
+        authGreeting.innerHTML = "You're logged in:"
+
+        authButton.innerHTML = "Log Out";
+        authButton.href = logoutURL;
+        authButton.classList.add("logout");
+        authButton.classList.remove("login");
+      }
+      else {
+        authGreeting.innerHTML = "Please log in here: "
+        
+        authButton.innerHTML = "Log In";
+        authButton.href = loginURL;
+        authButton.classList.add("login");
+        authButton.classList.remove("logout");
+      }
+    });
 }
