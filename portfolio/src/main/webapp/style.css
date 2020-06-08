@@ -150,7 +150,7 @@ nav a:hover {
   max-height: 600px;
 }
 
-#next-btn, #prev-btn {
+#next-button, #prev-button {
   padding: 1rem 2rem;
   font-size: 1.5rem;
 }
