@@ -90,7 +90,8 @@
             <p>
               Tech Stack: HTML, CSS, JavaScript, Django Web Framework 
             </p>
-            <a href="https://www.linkedin.com/posts/malcolmrjones_after-9-weeks-of-research-for-the-making-activity-6561042747594199040-qzDP">
+            <a href="https://www.linkedin.com/posts/malcolmrjones_after-9-weeks-
+            of-research-for-the-making-activity-6561042747594199040-qzDP">
               Learn More
             </a>
           </li>
@@ -143,7 +144,7 @@
       
       <div class="content-card">
         <h2 id="gallery-section">Gallery</h2>
-        <img src="images/gallery/pic-1.jpg" class="gallery-img" id="image-view" />
+        <img src="images/gallery/pic-1.jpg" id="gallery-img" />
         <br>
         <button onclick="prevImage()" id="prev-btn"> Previous</button>
         <button onclick="nextImage()" id="next-btn"> Next</button>
@@ -160,9 +161,14 @@
             <input type="submit" value="COMMENT"/>
           </form>
 
-          <button onclick="fetchComments()" id="load-comments-button">Load Comments</button>
-          <label for="comment-count" id="comment-count-label">Number of comments to display: </label>
-          <input type="number" id="comment-count" name="comment-count" min="1" max="10" value="5">
+          <button onclick="fetchComments()" id="load-comments-button">
+            Load Comments
+          </button>
+          <label for="comment-count" id="comment-count-label">
+            Number of comments to display: 
+          </label>
+          <input type="number" id="comment-count" name="comment-count" 
+          min="1" max="10" value="5">
           <ul id="commentlist"></ul>
 
           <button onclick="deleteAllComments()" id="delete-btn">Delete All Comments</button>

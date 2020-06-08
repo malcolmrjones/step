@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-var imageIndex = 1;
+let imageIndex = 1;
 
 /**
  * Makes request to receive all comments from server
@@ -51,7 +51,9 @@ function deleteAllComments() {
 
   window.confirm("Are you sure you want to delete all the comments?");
   
-  var confirmpss = "911b0a07a8cacfebc5f1f45596d67017136c950499fa5b4ff6faffa031f3cec7f197853d1660712c154e1f59c60f682e34ea9b5cbd2d8d5adb0c834f963f30de";
+  var passwordConfirmation = "911b0a07a8cacfebc5f1f45596d67017136c950499fa5b4" + 
+    "ff6faffa031f3cec7f197853d1660712c154e1f59c60f682e34ea9b5cbd2d8d5" + 
+    "adb0c834f963f30de";
   var password = window.prompt("Please enter the pasword to confirm you have the POWWEEER to delete ALL COMMENTS!!!!!!!!!!!");
 
   if (password !== confirmpss) {
@@ -76,7 +78,7 @@ function nextImage() {
     imageIndex = 1;
   }
 
-  const imageView = document.getElementById("image-view");
+  const imageView = document.getElementById("gallery-img");
   imageView.src = "images/gallery/pic-" + imageIndex + ".jpg";
 }
 
