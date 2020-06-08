@@ -17,7 +17,7 @@ package com.google.sps.servlets;
 import java.io.IOException;
 import java.util.ArrayList;
 import com.google.gson.Gson;
-
+import com.google.sps.data.Comment;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
@@ -47,7 +47,7 @@ public class DataServlet extends HttpServlet {
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    ArrayList<String> comments = new ArrayList<String>();
+    ArrayList<Comment> comments = new ArrayList<Comment>();
     int countOfComments = Integer.parseInt(request.getParameter("comment-count"));
     Query queryAllComments = new Query("Comment").addSort("time", SortDirection.DESCENDING);
     PreparedQuery results = datastore.prepare(queryAllComments);
@@ -55,7 +55,13 @@ public class DataServlet extends HttpServlet {
 
     for (Entity comment : results.asIterable()) {
       String commentContent = (String) comment.getProperty("content");
-      comments.add(commentContent);
+      
+      comments.add(new Comment(
+        comment.getKey().getId(),
+        (String) comment.getProperty("author"),
+        (String) comment.getProperty("email"),
+        (String) comment.getProperty("content")
+      ));
     }
 
     //Prevent comment count to be over the total number of comments
