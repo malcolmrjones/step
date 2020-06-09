@@ -58,6 +58,7 @@ public class DataServlet extends HttpServlet {
       
       comments.add(new Comment(
         comment.getKey().getId(),
+        (long) comment.getProperty("time"),
         (String) comment.getProperty("author"),
         (String) comment.getProperty("email"),
         (String) comment.getProperty("content")

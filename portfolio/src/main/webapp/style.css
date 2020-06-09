@@ -224,6 +224,20 @@ nav a:hover {
   background-color: #05B384;
 }
 
-#comment-info-group {
+#comment-list {
+  list-style: none;
+  margin: 1rem 0;
+}
+
+.comment-item {
+  background-color: #F4F1E1;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.comment-item div {
   display: flex;
+  justify-content: space-between;
+  margin: 0.5rem 0;
+
 }

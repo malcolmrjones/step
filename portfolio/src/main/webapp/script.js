@@ -63,10 +63,51 @@ function displayComments(comments) {
   }
 
   for (comment of comments) {
-    const commentListItem = document.createElement('li');
-    commentListItem.innerText =  comment["authorEmail"] + " --- " + comment["content"];
+    const commentListItem = createCommentItem(comment["authorEmail"], 
+      Number(comment["timestamp"]), comment["content"]);
     commentList.appendChild(commentListItem);
   }
+}
+
+/**
+ * Creates the DOM element for a comment
+ * @param {!string} author 
+ * @param {!number} timestamp
+ * @param {!string} content
+ */
+function createCommentItem(author, timestamp, content) {
+  const commentListItem = document.createElement('li');
+  const commentItemDiv = document.createElement('div');
+  const commentItemAuthor = document.createElement('h3');
+  const commentItemDate = document.createElement('p');
+  const commentItemTime = document.createElement('p');
+  const commentItemContent = document.createElement('p');
+
+  commentListItem.classList.add("comment-item");
+
+  commentItemAuthor.classList.add("comment-item-author")
+  commentItemDate.classList.add("comment-item-date")
+  commentItemTime.classList.add("comment-item-time")
+
+  const commentDate = new Date(timestamp);
+
+  commentItemAuthor.innerHTML = author;
+  commentItemDate.innerHTML = (commentDate.getMonth() + 1) + "/" 
+    + commentDate.getDate() + "/" 
+    + commentDate.getFullYear();
+  commentItemTime.innerHTML = commentDate.getHours() + ":" 
+    + commentDate.getMinutes() + ":"
+    + commentDate.getSeconds();
+  commentItemContent.innerHTML = content;
+
+  commentItemDiv.appendChild(commentItemAuthor);
+  commentItemDiv.appendChild(commentItemDate);
+  commentItemDiv.appendChild(commentItemTime);
+
+  commentListItem.appendChild(commentItemDiv);
+  commentListItem.appendChild(commentItemContent);
+
+  return commentListItem;
 }
 
 /**
