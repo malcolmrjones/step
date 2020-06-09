@@ -19,9 +19,7 @@ window.onload = function() {
   handleCommentFormVisibility();
   initializeAuth();
   fetchComments();
-
-  const commentInput = document.getElementById("comment-input");
-  commentInput.oninput = function () {
+  document.getElementById("comment-input").oninput = function () {
     const commentCharactersLabel = 
       document.getElementById("comment-character-count");
     
@@ -34,8 +32,6 @@ window.onload = function() {
       commentCharactersLabel.style.color = "inherit";
     }
   }
-
-
 }
 
 
@@ -162,12 +158,15 @@ function handleCommentFormVisibility() {
     .then(response => response.json())
     .then(loginInfo => {
       const loginStatus = loginInfo["loginStatus"];
-      const commentForm = document.getElementById("comment-form")
+      const commentForm = document.getElementById("comment-form");
+      const loginAlert = document.getElementById("comment-login-alert");
       if (loginStatus === "true") {
         commentForm.style.visibility = "visible";
+        loginAlert.style.visibility = "collapse";
       }
       else {
         commentForm.style.visibility = "hidden";
+        loginAlert.style.visibility = "visible";
       }
     });
 

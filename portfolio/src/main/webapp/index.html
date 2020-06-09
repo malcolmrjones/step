@@ -172,9 +172,9 @@
               <p id="comment-character-count">0 / 300</p>
             </div>
           </form>
-
+          <h3 id="comment-login-alert">Please log in to write a comment.</h3>
           <hr>
-
+          <button onclick="fetchComments()" id="refresh-button"><ion-icon name="refresh-outline"></ion-icon></button>
           <label for="comment-count" id="comment-count-label">
             Comments per Page: 
           </label>
@@ -186,7 +186,8 @@
 
         </div>
       </div>
-        
+
+    <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
   </body>
 
 </html>
