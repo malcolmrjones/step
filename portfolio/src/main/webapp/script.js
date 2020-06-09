@@ -18,6 +18,24 @@ let imageIndex = 1;
 window.onload = function() {
   handleCommentFormVisibility();
   initializeAuth();
+  fetchComments();
+
+  const commentInput = document.getElementById("comment-input");
+  commentInput.oninput = function () {
+    const commentCharactersLabel = 
+      document.getElementById("comment-character-count");
+    
+    commentCharactersLabel.innerHTML =  this.value.length + " / " + this.maxLength;
+
+    if(this.maxLength - this.value.length <= 10) {
+      commentCharactersLabel.style.color = "red";
+    }
+    else {
+      commentCharactersLabel.style.color = "inherit";
+    }
+  }
+
+
 }
 
 

@@ -160,23 +160,40 @@
         
         <div class="comment-area">
           <form action="/data" method="post" id="comment-form">
-            <label for="comment-author" id="comment-author-label">Name: </label>
-            <input type="text" name="comment-author" id="comment-author"/>
-            <textarea name="comment-input" id="comment-input"></textarea>
-            <input type="submit" value="COMMENT"/>
+            <div id="comment-author-group">
+              <label for="comment-author" id="comment-author-label">Name: </label>
+              <input type="text" name="comment-author" id="comment-author"/>  
+            </div>
+            <textarea name="comment-input" id="comment-input" 
+            placeholder="Write your comment here..." maxlength="300"></textarea>
+
+            <div id="comment-submit-group">
+              <input type="submit" value="COMMENT"/>
+              <p id="comment-character-count">0 / 300</p>
+            </div>
           </form>
 
-          <button onclick="fetchComments()" id="load-comments-button">
-            Load Comments
-          </button>
+          <hr>
+
           <label for="comment-count" id="comment-count-label">
-            Number of comments to display: 
+            Comments per Page: 
           </label>
           <input type="number" id="comment-count" name="comment-count" 
           min="1" max="10" value="5">
-          <ul id="comment-list"></ul>
 
-          <button onclick="deleteAllComments()" id="delete-button">Delete All Comments</button>
+          <ul id="comment-list">
+            <li class="comment-item">
+              <div class="comment-info-group">
+                <h3>Malcolm Jones</h3>
+                <p>06.02.2020</p>
+                <p>13:11</p>
+              </div>
+              <p>
+                This is a test comment.
+              </p>
+            </li>
+          </ul>
+
         </div>
       </div>
         
