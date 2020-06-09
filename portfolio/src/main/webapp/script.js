@@ -14,7 +14,6 @@
 
 let imageIndex = 1;
 
-
 window.onload = function() {
   handleCommentFormVisibility();
   initializeAuth();
@@ -25,7 +24,7 @@ window.onload = function() {
     
     commentCharactersLabel.innerHTML =  this.value.length + " / " + this.maxLength;
 
-    if(this.maxLength - this.value.length <= 10) {
+    if (this.maxLength - this.value.length <= 10) {
       commentCharactersLabel.style.color = "red";
     }
     else {
@@ -33,7 +32,6 @@ window.onload = function() {
     }
   }
 }
-
 
 /**
  * Makes request to receive all comments from server
@@ -173,9 +171,11 @@ function handleCommentFormVisibility() {
       }
     });
 
-
 }
 
+/**
+ * Retrieves auth info and displays the correct login interface
+ */
 function initializeAuth() {
   const loginStatusPromise = fetch("/login/status");
 

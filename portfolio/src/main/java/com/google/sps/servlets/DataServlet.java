@@ -51,7 +51,6 @@ public class DataServlet extends HttpServlet {
     int countOfComments = Integer.parseInt(request.getParameter("comment-count"));
     Query queryAllComments = new Query("Comment").addSort("time", SortDirection.DESCENDING);
     PreparedQuery results = datastore.prepare(queryAllComments);
-    
 
     for (Entity comment : results.asIterable()) {
       String commentContent = (String) comment.getProperty("content");
@@ -90,4 +89,3 @@ public class DataServlet extends HttpServlet {
     response.sendRedirect("/index.html");
   }
 }
-

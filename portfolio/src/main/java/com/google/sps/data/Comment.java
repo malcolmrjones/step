@@ -22,7 +22,6 @@ public final class Comment {
   private final String authorEmail;
   private final String content;
 
-
   public Comment(long id, long timestamp, String authorName, String authorEmail, String content) {
     this.id = id;
     this.timestamp = timestamp;
