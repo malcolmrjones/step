@@ -59,7 +59,10 @@ function displayComments(comments) {
   }
 
   for (comment of comments) {
-    const commentListItem = createCommentItem(comment["authorEmail"], 
+    let displayName = comment["authorName"];
+    if (displayName === "") displayName =  comment["authorEmail"];
+
+    const commentListItem = createCommentItem(displayName, 
       Number(comment["timestamp"]), comment["content"]);
     commentList.appendChild(commentListItem);
   }
