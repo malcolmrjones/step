@@ -21,7 +21,7 @@ p {
 }
 
 #navigation {
-  background-color: #F4EBD9;
+  background-color: #f4ebd9;
   color: black;
   height: fit-content;
   padding: 2em;
@@ -29,7 +29,7 @@ p {
 }
 
 #connection {
-  background-color: #F4EBD9;
+  background-color: #f4ebd9;
   color: black;
   padding: 2em;
   margin-top: 2em;
@@ -38,7 +38,6 @@ p {
   flex-wrap: wrap;
   justify-content: center;
 }
-
 
 #connection a {
   padding: 1rem 2rem;
@@ -53,12 +52,12 @@ p {
 }
 
 .linkedin {
-  background-color: #2867B2;
+  background-color: #2867b2;
   color: white;
 }
 
 #login {
-  background-color: #F4EBD9;
+  background-color: #f4ebd9;
   color: black;
   padding: 2em;
   margin-top: 2em;
@@ -84,7 +83,7 @@ p {
   background-color: #02aa5b;
   color: white;
   font-weight: bold;
-  border: 2px solid #05B384;
+  border: 2px solid #05b384;
 }
 
 .logout {
@@ -120,7 +119,7 @@ nav a {
 }
 
 nav a:hover {
-  color: #B33951;
+  color: #b33951;
 }
 
 #content {
@@ -133,7 +132,7 @@ nav a:hover {
 .content-card {
   margin-bottom: 2rem;
   padding: 4rem;
-  background-color: #DEC691;
+  background-color: #dec691;
   height: fit-content;
   border-radius: 8px;
 }
@@ -170,7 +169,7 @@ nav a:hover {
 }
 
 .project-card h4 {
-  font-size: 1.50rem;
+  font-size: 1.5rem;
 }
 
 .project-card p {
@@ -179,7 +178,7 @@ nav a:hover {
 
 .project-card a {
   text-decoration: none;
-  color: #B33951;
+  color: #b33951;
   font-weight: bold;
 }
 
@@ -189,7 +188,8 @@ nav a:hover {
   max-height: 600px;
 }
 
-#next-button, #prev-button {
+#next-button,
+#prev-button {
   padding: 1rem 2rem;
   font-size: 1.5rem;
 }
@@ -210,7 +210,7 @@ nav a:hover {
   margin-right: 1rem;
 }
 
-#comment-author-group input[type=text] {
+#comment-author-group input[type="text"] {
   font-size: 1.25rem;
   padding: 0.25rem;
   flex-grow: 1;
@@ -224,13 +224,13 @@ nav a:hover {
   margin: 1rem 0rem;
 }
 
-#comment-form input[type=submit] {
+#comment-form input[type="submit"] {
   align-self: flex-start;
   padding: 0.5rem 2em;
   background-color: #02aa5b;
   color: white;
   font-weight: bold;
-  border: 2px solid #05B384;
+  border: 2px solid #05b384;
 }
 
 #comment-submit-group {
@@ -242,8 +242,8 @@ nav a:hover {
   margin: 0 1rem;
 }
 
-#comment-form input[type=submit]:hover {
-  background-color: #05B384;
+#comment-form input[type="submit"]:hover {
+  background-color: #05b384;
 }
 
 #comment-list {
@@ -252,7 +252,7 @@ nav a:hover {
 }
 
 .comment-item {
-  background-color: #F4F1E1;
+  background-color: #f4f1e1;
   padding: 1rem;
   margin-bottom: 1rem;
 }
@@ -261,13 +261,12 @@ nav a:hover {
   display: flex;
   justify-content: space-between;
   margin: 0.5rem 0;
-
 }
 
 #refresh-button {
   font-size: 1.25rem;
-  padding: 0.50rem;
-  margin-right: 1rem;;
+  padding: 0.5rem;
+  margin-right: 1rem;
 }
 
 #comment-login-alert {
