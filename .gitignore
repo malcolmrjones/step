@@ -5,3 +5,5 @@ target/
 .settings/
 walkthroughs/
 .vscode/
+.prettierrc
+
