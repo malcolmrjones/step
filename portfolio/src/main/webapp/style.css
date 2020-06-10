@@ -276,3 +276,7 @@ nav a:hover {
   text-align: center;
   margin: 2rem 0;
 }
+
+#map {
+  height: 800px;
+}

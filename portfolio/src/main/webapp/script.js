@@ -13,6 +13,7 @@
 // limitations under the License.
 
 let imageIndex = 1;
+let map;
 
 window.onload = function() {
   handleCommentFormVisibility();
@@ -215,4 +216,14 @@ function initializeAuth() {
         authButton.classList.remove("logout");
       }
     });
+}
+
+/**
+ * Generates a map from Google Map API
+ */
+function initializeMap() {
+  map = new google.maps.Map(document.getElementById("map"), {
+    center: { lat: 35.5733225, lng: -80.7187387 },
+    zoom: 8
+  });
 }
