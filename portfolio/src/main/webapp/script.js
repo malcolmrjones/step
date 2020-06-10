@@ -41,7 +41,6 @@ function fetchComments() {
   const commentsPromise = fetch(
     "/data?" + "comment-count=" + document.getElementById("comment-count").value
   );
-
   commentsPromise.then((response) => response.json()).then(displayComments);
 }
 
@@ -52,7 +51,7 @@ function fetchComments() {
 function displayComments(comments) {
   const commentList = document.getElementById("comment-list");
 
-  //Remove all children of comment list to prevent dusplicate display
+  // Remove all children of comment list to prevent dusplicate display
   while (commentList.firstChild) {
     commentList.removeChild(commentList.firstChild);
   }
