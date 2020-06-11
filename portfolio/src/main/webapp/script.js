@@ -222,22 +222,50 @@ function initializeAuth() {
  * Generates a map from Google Map API
  */
 function initializeMap() {
-  map = new google.maps.Map(document.getElementById("map"), {
-    center: { lat: 35.5733225, lng: -80.7187387 },
-    zoom: 8,
-    styles: [
-      {
-        featureType: "poi",
-        stylers: [{ visibility: "off" }]
-      },
-      {
-        featureType: "transit",
-        stylers: [{ visibility: "off" }]
-      },
-      {
-        featureType: "road",
-        stylers: [{ visibility: "off" }]
-      }
-    ]
-  });
+  fetch("/tropical-storm-data")
+    .then((response) => response.json())
+    .then((tropicalStormData) => {
+      map = new google.maps.Map(document.getElementById("map"), {
+        center: { lat: 35.5733225, lng: -80.7187387 },
+        zoom: 8,
+        styles: [
+          {
+            featureType: "poi",
+            stylers: [{ visibility: "off" }]
+          },
+          {
+            featureType: "transit",
+            stylers: [{ visibility: "off" }]
+          },
+          {
+            featureType: "road",
+            stylers: [{ visibility: "off" }]
+          }
+        ]
+      });
+
+      tropicalStormData.forEach((tropicalStorm) => {
+        new google.maps.Marker({
+          position: { lat: tropicalStorm["lat"], lng: tropicalStorm["lon"] },
+          map: map,
+          title:
+            tropicalStorm["ID"] +
+            " | " +
+            tropicalStorm["name"] +
+            " " +
+            tropicalStorm["season"] +
+            " -- " +
+            tropicalStorm["date"],
+            icon: {
+              path: google.maps.SymbolPath.CIRCLE,
+              fillColor: '#00F',
+              fillOpacity: 0.6,
+              strokeColor: '#00A',
+              strokeOpacity: 0.9,
+              strokeWeight: 1,
+              scale: 7
+            }
+        });
+      });
+    });
 }
