@@ -23,7 +23,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.gson.Gson;
 import com.google.sps.data.TropicalStorm;
 
 @WebServlet("/tropical-storm-data")
@@ -56,7 +55,15 @@ public class TropicalStormDataServlet extends HttpServlet {
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     response.setContentType("application/json;");
-    response.getWriter().println(new Gson().toJson(tropicalStormData));
+
+    Scanner scanner = new Scanner(getServletContext()
+      .getResourceAsStream("/WEB-INF/tropical-storm-data-past-3-years-grouped.json"));
+    
+      while (scanner.hasNextLine()) {
+        response.getWriter().println(scanner.nextLine());
+      }
+  
+  
   }
 
 }

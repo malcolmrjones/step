@@ -244,27 +244,23 @@ function initializeMap() {
         ]
       });
 
-      tropicalStormData.forEach((tropicalStorm) => {
-        new google.maps.Marker({
-          position: { lat: tropicalStorm["lat"], lng: tropicalStorm["lon"] },
-          map: map,
-          title:
-            tropicalStorm["ID"] +
-            " | " +
-            tropicalStorm["name"] +
-            " " +
-            tropicalStorm["season"] +
-            " -- " +
-            tropicalStorm["date"],
-            icon: {
-              path: google.maps.SymbolPath.CIRCLE,
-              fillColor: '#00F',
-              fillOpacity: 0.6,
-              strokeColor: '#00A',
-              strokeOpacity: 0.9,
-              strokeWeight: 1,
-              scale: 7
-            }
+      Object.keys(tropicalStormData).forEach((tropicalStormID) => {
+        let tropicalStormPathCoords = [];
+
+        tropicalStormData[tropicalStormID].forEach((dataPoint) => {
+          tropicalStormPathCoords.push({
+            lat: dataPoint["lat"],
+            lng: dataPoint["lon"]
+          });
+        });
+
+        tropicalStormPath = new google.maps.Polyline({
+          path: tropicalStormPathCoords,
+          geodesic: true,
+          strokeColor: "#FF0000",
+          strokeOpacity: 1.0,
+          strokeWeight: 2,
+          map: map
         });
       });
     });
