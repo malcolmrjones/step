@@ -233,6 +233,10 @@ function initializeMap() {
       {
         featureType: "transit",
         stylers: [{ visibility: "off" }]
+      },
+      {
+        featureType: "road",
+        stylers: [{ visibility: "off" }]
       }
     ]
   });

@@ -29,4 +29,5 @@ public final class Comment {
     this.authorEmail = authorEmail;
     this.content = content;
   }
+  
 }
