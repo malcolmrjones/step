@@ -218,6 +218,17 @@ function initializeAuth() {
     });
 }
 
+function InfoControl(controlDiv) {
+  let controlUI = document.createElement("div");
+  controlUI.classList.add("tropicalStormInfoControl");
+  controlDiv.appendChild(controlUI);
+
+  let controlText = document.createElement("div");
+  controlText.textContent =
+    "Hover over a path to get info on the tropical storm.";
+  controlUI.appendChild(controlText);
+}
+
 /**
  * Generates a map from Google Map API
  */
@@ -228,6 +239,7 @@ function initializeMap() {
       map = new google.maps.Map(document.getElementById("map"), {
         center: { lat: 35.5733225, lng: -80.7187387 },
         zoom: 8,
+        disableDefaultUI: true,
         styles: [
           {
             featureType: "poi",
@@ -243,6 +255,12 @@ function initializeMap() {
           }
         ]
       });
+
+      let infoControlDiv = document.createElement("div");
+      let infoControl = new InfoControl(infoControlDiv, map);
+
+      infoControlDiv.index = 1;
+      map.controls[google.maps.ControlPosition.TOP_CENTER].push(infoControlDiv);
 
       Object.keys(tropicalStormData).forEach((tropicalStormID) => {
         let tropicalStormPathCoords = [];
@@ -261,10 +279,34 @@ function initializeMap() {
           path: tropicalStormPathCoords,
           geodesic: true,
           strokeColor: randomColor,
-          strokeOpacity: 1.0,
-          strokeWeight: 2,
+          strokeOpacity: 0.75,
+          strokeWeight: 8,
           map: map
         });
+
+        google.maps.event.addListener(
+          tropicalStormPath,
+          "mouseover",
+          function() {
+            infoControlDiv.firstChild.textContent = `${tropicalStormData[tropicalStormID][0]["name"]} ${tropicalStormData[tropicalStormID][0]["season"]} | First Landfall on ${tropicalStormData[tropicalStormID][0]["date"]} | ID:${tropicalStormID}`;
+            this.setOptions({
+              strokeOpacity: 1,
+              strokeWeight: 10
+            });
+          }
+        );
+        google.maps.event.addListener(
+          tropicalStormPath,
+          "mouseout",
+          function() {
+            infoControlDiv.firstChild.textContent =
+              "Hover over a path to get info on the tropical storm.";
+            this.setOptions({
+              strokeOpacity: 0.75,
+              strokeWeight: 8
+            });
+          }
+        );
       });
     });
 }
