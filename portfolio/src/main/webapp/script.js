@@ -15,6 +15,9 @@
 let imageIndex = 1;
 let map;
 
+/*
+* Initialization function
+*/
 window.onload = function() {
   handleCommentFormVisibility();
   initializeAuth();
@@ -120,31 +123,6 @@ function createCommentItem(author, timestamp, content) {
 }
 
 /**
- * Sends request to remove all comments
- */
-function deleteAllComments() {
-  window.confirm("Are you sure you want to delete all the comments?");
-
-  var passwordConfirmation =
-    "911b0a07a8cacfebc5f1f45596d67017136c950499fa5b4" +
-    "ff6faffa031f3cec7f197853d1660712c154e1f59c60f682e34ea9b5cbd2d8d5" +
-    "adb0c834f963f30de";
-  var password = window.prompt(
-    "Please enter the pasword to confirm you have the POWWEEER to delete ALL COMMENTS!!!!!!!!!!!"
-  );
-
-  if (password !== confirmpss) {
-    window.alert("WRONG PASSWORD!");
-    return;
-  }
-
-  const request = new Request("/delete-data", { method: "POST" });
-  const removeCommentsPromise = fetch(request);
-
-  removeCommentsPromise.then(fetchComments);
-}
-
-/**
  * Changes source of gallery image view to the next image
  */
 function nextImage() {
@@ -218,6 +196,10 @@ function initializeAuth() {
     });
 }
 
+/**
+ * Creates the control component that shows information about tropical storms
+ * @param {HTMLDivElement} controlDiv
+ */
 function InfoControl(controlDiv) {
   let controlUI = document.createElement("div");
   controlUI.classList.add("tropicalStormInfoControl");
@@ -284,6 +266,9 @@ function initializeMap() {
           map: map
         });
 
+        /*
+         Event handling to "highlight" a hurricane path and displaying its info
+         */
         google.maps.event.addListener(
           tropicalStormPath,
           "mouseover",
