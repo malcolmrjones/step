@@ -254,10 +254,13 @@ function initializeMap() {
           });
         });
 
+        let randomHue = Math.floor(Math.random() * 360) + 90;
+        let randomColor = `hsl(${randomHue}, 100%, 40%)`;
+
         tropicalStormPath = new google.maps.Polyline({
           path: tropicalStormPathCoords,
           geodesic: true,
-          strokeColor: "#FF0000",
+          strokeColor: randomColor,
           strokeOpacity: 1.0,
           strokeWeight: 2,
           map: map

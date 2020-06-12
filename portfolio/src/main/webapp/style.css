@@ -280,3 +280,9 @@ nav a:hover {
 #map {
   height: 800px;
 }
+
+.tropicalStormInfoControl {
+  width: 100px;
+  height: 20px;
+  padding: 0.25rem 1rem;
+}
