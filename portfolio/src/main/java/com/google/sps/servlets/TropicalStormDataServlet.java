@@ -15,7 +15,6 @@
 package com.google.sps.servlets;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 import javax.servlet.annotation.WebServlet;
@@ -23,34 +22,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.sps.data.TropicalStorm;
-
 @WebServlet("/tropical-storm-data")
 public class TropicalStormDataServlet extends HttpServlet {
-
-  private ArrayList<TropicalStorm> tropicalStormData;
-  
-  @Override
-  public void init() {
-    tropicalStormData = new ArrayList<TropicalStorm>();
-
-    Scanner scanner = new Scanner(getServletContext()
-      .getResourceAsStream("/WEB-INF/tropical_storm_landfall_past_3_years.csv"));
-    
-      while (scanner.hasNextLine()) {
-        String line = scanner.nextLine();
-        String[] info = line.split(",");
-
-        String ID = info[0];
-        int season = Integer.parseInt(info[1]);
-        String name = info[2];
-        String date = info[3];
-        double lat = Double.parseDouble(info[4]);
-        double lon = Double.parseDouble(info[5]);
-
-        tropicalStormData.add(new TropicalStorm(ID, season, name, date, lat, lon));
-    }
-  }
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {

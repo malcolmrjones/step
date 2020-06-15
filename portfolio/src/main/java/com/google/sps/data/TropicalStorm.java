@@ -14,6 +14,7 @@
 
 package com.google.sps.data;
 
+/** This class represents landfall data of a tropical storm */
 public class TropicalStorm {
 
   private final String ID;
@@ -21,15 +22,15 @@ public class TropicalStorm {
   private final String name;
   private final String date;
   private final double lat;
-  private final double lon;
+  private final double lng;
 
-  public TropicalStorm(String ID, int season, String name, String date, double lat, double lon) {
+  public TropicalStorm(String ID, int season, String name, String date, double lat, double lng) {
     this.ID = ID;
     this.season = season;
     this.name = name;
     this.date = date;
     this.lat = lat;
-    this.lon = lon;
+    this.lng = lng;
   }
   
 }
