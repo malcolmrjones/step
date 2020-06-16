@@ -36,7 +36,6 @@ public class TropicalStormDataServlet extends HttpServlet {
         response.getWriter().println(scanner.nextLine());
       }
   
-  
   }
 
 }

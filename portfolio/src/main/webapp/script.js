@@ -15,14 +15,14 @@
 let imageIndex = 1;
 let map;
 
-/*
-* Initialization function
-*/
-window.onload = function() {
+/**
+ * Initialization function
+ */
+window.onload = function () {
   handleCommentFormVisibility();
   initializeAuth();
   fetchComments();
-  document.getElementById("comment-input").oninput = function() {
+  document.getElementById("comment-input").oninput = function () {
     const commentCharactersLabel = document.getElementById(
       "comment-character-count"
     );
@@ -211,6 +211,84 @@ function InfoControl(controlDiv) {
   controlUI.appendChild(controlText);
 }
 
+function createMap() {
+  let newMap = new google.maps.Map(document.getElementById("map"), {
+    center: { lat: 35.5733225, lng: -80.7187387 },
+    zoom: 8,
+    disableDefaultUI: true,
+    styles: [
+      {
+        featureType: "poi",
+        stylers: [{ visibility: "off" }],
+      },
+      {
+        featureType: "transit",
+        stylers: [{ visibility: "off" }],
+      },
+      {
+        featureType: "road",
+        stylers: [{ visibility: "off" }],
+      },
+    ],
+  });
+
+  return newMap;
+}
+
+function drawPaths(map, tropicalStormData, infoControlDiv) {
+  Object.keys(tropicalStormData).forEach((tropicalStormID) => {
+    let tropicalStormPathCoords = [];
+
+    tropicalStormData[tropicalStormID].forEach((dataPoint) => {
+      tropicalStormPathCoords.push({
+        lat: dataPoint["lat"],
+        lng: dataPoint["lon"],
+      });
+    });
+
+    let randomHue = Math.floor(Math.random() * 360) + 90;
+    let randomColor = `hsl(${randomHue}, 100%, 40%)`;
+
+    let tropicalStormPath = new google.maps.Polyline({
+      path: tropicalStormPathCoords,
+      geodesic: true,
+      strokeColor: randomColor,
+      strokeOpacity: 0.75,
+      strokeWeight: 8,
+      map: map,
+    });
+
+    /*
+    Event handling to "highlight" a hurricane path and displaying its info
+    */
+    let firstTropicalStormDataPoint = tropicalStormData[tropicalStormID][0];
+    let infoControl = infoControlDiv.firstChild;
+    google.maps.event.addListener(
+      tropicalStormPath,
+      "mouseover",
+      function() {
+        infoControl.textContent = `${firstTropicalStormDataPoint["name"]} ${firstTropicalStormDataPoint["season"]} | First Landfall on ${firstTropicalStormDataPoint["date"]} | ID:${tropicalStormID}`;
+        this.setOptions({
+          strokeOpacity: 1,
+          strokeWeight: 10,
+        });
+      }
+    );
+    google.maps.event.addListener(
+      tropicalStormPath,
+      "mouseout",
+      function() {
+        infoControl.textContent =
+        "Hover over a path to get info on the tropical storm.";
+        this.setOptions({
+          strokeOpacity: 0.75,
+          strokeWeight: 8,
+        });
+      }
+    );
+  });
+}
+
 /**
  * Generates a map from Google Map API
  */
@@ -218,25 +296,7 @@ function initializeMap() {
   fetch("/tropical-storm-data")
     .then((response) => response.json())
     .then((tropicalStormData) => {
-      map = new google.maps.Map(document.getElementById("map"), {
-        center: { lat: 35.5733225, lng: -80.7187387 },
-        zoom: 8,
-        disableDefaultUI: true,
-        styles: [
-          {
-            featureType: "poi",
-            stylers: [{ visibility: "off" }]
-          },
-          {
-            featureType: "transit",
-            stylers: [{ visibility: "off" }]
-          },
-          {
-            featureType: "road",
-            stylers: [{ visibility: "off" }]
-          }
-        ]
-      });
+      map = createMap();
 
       let infoControlDiv = document.createElement("div");
       let infoControl = new InfoControl(infoControlDiv, map);
@@ -244,54 +304,6 @@ function initializeMap() {
       infoControlDiv.index = 1;
       map.controls[google.maps.ControlPosition.TOP_CENTER].push(infoControlDiv);
 
-      Object.keys(tropicalStormData).forEach((tropicalStormID) => {
-        let tropicalStormPathCoords = [];
-
-        tropicalStormData[tropicalStormID].forEach((dataPoint) => {
-          tropicalStormPathCoords.push({
-            lat: dataPoint["lat"],
-            lng: dataPoint["lon"]
-          });
-        });
-
-        let randomHue = Math.floor(Math.random() * 360) + 90;
-        let randomColor = `hsl(${randomHue}, 100%, 40%)`;
-
-        tropicalStormPath = new google.maps.Polyline({
-          path: tropicalStormPathCoords,
-          geodesic: true,
-          strokeColor: randomColor,
-          strokeOpacity: 0.75,
-          strokeWeight: 8,
-          map: map
-        });
-
-        /*
-         Event handling to "highlight" a hurricane path and displaying its info
-         */
-        google.maps.event.addListener(
-          tropicalStormPath,
-          "mouseover",
-          function() {
-            infoControlDiv.firstChild.textContent = `${tropicalStormData[tropicalStormID][0]["name"]} ${tropicalStormData[tropicalStormID][0]["season"]} | First Landfall on ${tropicalStormData[tropicalStormID][0]["date"]} | ID:${tropicalStormID}`;
-            this.setOptions({
-              strokeOpacity: 1,
-              strokeWeight: 10
-            });
-          }
-        );
-        google.maps.event.addListener(
-          tropicalStormPath,
-          "mouseout",
-          function() {
-            infoControlDiv.firstChild.textContent =
-              "Hover over a path to get info on the tropical storm.";
-            this.setOptions({
-              strokeOpacity: 0.75,
-              strokeWeight: 8
-            });
-          }
-        );
-      });
+      drawPaths(map, tropicalStormData, infoControlDiv);
     });
 }
