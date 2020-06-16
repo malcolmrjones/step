@@ -202,7 +202,7 @@ function initializeAuth() {
  */
 function InfoControl(controlDiv) {
   let controlUI = document.createElement("div");
-  controlUI.classList.add("tropical-ttorm-info-control");
+  controlUI.classList.add("tropical-storm-info-control");
   controlDiv.appendChild(controlUI);
 
   let controlText = document.createElement("div");
