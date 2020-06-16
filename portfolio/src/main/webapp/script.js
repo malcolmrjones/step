@@ -202,19 +202,19 @@ function initializeAuth() {
  */
 function InfoControl(controlDiv) {
   let controlUI = document.createElement("div");
-  controlUI.classList.add("tropicalStormInfoControl");
+  controlUI.classList.add("tropical-ttorm-info-control");
   controlDiv.appendChild(controlUI);
 
   let controlText = document.createElement("div");
   controlText.textContent =
-    "Hover over a path to get info on the tropical storm.";
+      "Hover over a path to get info on the tropical storm.";
   controlUI.appendChild(controlText);
 }
 
 function createMap() {
   let newMap = new google.maps.Map(document.getElementById("map"), {
-    center: { lat: 35.5733225, lng: -80.7187387 },
-    zoom: 8,
+    center: { lat: 37.4661449, lng: -96.5709606 },
+    zoom: 4,
     disableDefaultUI: true,
     styles: [
       {
@@ -263,29 +263,21 @@ function drawPaths(map, tropicalStormData, infoControlDiv) {
     */
     let firstTropicalStormDataPoint = tropicalStormData[tropicalStormID][0];
     let infoControl = infoControlDiv.firstChild;
-    google.maps.event.addListener(
-      tropicalStormPath,
-      "mouseover",
-      function() {
-        infoControl.textContent = `${firstTropicalStormDataPoint["name"]} ${firstTropicalStormDataPoint["season"]} | First Landfall on ${firstTropicalStormDataPoint["date"]} | ID:${tropicalStormID}`;
-        this.setOptions({
-          strokeOpacity: 1,
-          strokeWeight: 10,
-        });
-      }
-    );
-    google.maps.event.addListener(
-      tropicalStormPath,
-      "mouseout",
-      function() {
-        infoControl.textContent =
+    google.maps.event.addListener(tropicalStormPath, "mouseover", function () {
+      infoControl.textContent = `${firstTropicalStormDataPoint["name"]} ${firstTropicalStormDataPoint["season"]} | First Landfall on ${firstTropicalStormDataPoint["date"]} | ID:${tropicalStormID}`;
+      this.setOptions({
+        strokeOpacity: 1,
+        strokeWeight: 10,
+      });
+    });
+    google.maps.event.addListener(tropicalStormPath, "mouseout", function () {
+      infoControl.textContent =
         "Hover over a path to get info on the tropical storm.";
-        this.setOptions({
-          strokeOpacity: 0.75,
-          strokeWeight: 8,
-        });
-      }
-    );
+      this.setOptions({
+        strokeOpacity: 0.75,
+        strokeWeight: 8,
+      });
+    });
   });
 }
 
