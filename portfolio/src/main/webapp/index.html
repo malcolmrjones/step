@@ -17,10 +17,11 @@
         <h1 class="title">Jones</h1>
         <nav>
           <ol>
-            <li><a href="#about-section" name="gallery-section">About</a></li>
-            <li><a href="#projects-section" name="projects-section">Projects</a></li>
-            <li><a href="#gallery-section" name="gallery-section">Gallery</a></li>
-            <li><a href="#comments-section" name="comments-section">Comments</a></li>
+            <li><a href="#about-section">About</a></li>
+            <li><a href="#projects-section">Projects</a></li>
+            <li><a href="#gallery-section">Gallery</a></li>
+            <li><a href="#map-section">Map</a></li>
+            <li><a href="#comments-section">Comments</a></li>
           </ol>
         </nav>
       </div>
@@ -36,12 +37,10 @@
       </div>
     </div>
 
-    
-
     <div id="content">
 
-      <div class="content-card">
-        <h2 id="about-section">About Me</h2>
+      <div id="about-section" name="about-section" class="content-card">
+        <h2>About Me</h2>
         <img src="images/malcolm-1.jpeg" id="about-img" />
         <p class="about-paragraph">
           Welcome to my portfolio website! I am Malcolm and I am from 
@@ -82,8 +81,8 @@
         </p>
       </div>
       
-      <div class="content-card">
-        <h2 id="projects-section">Projects</h2>
+      <div id="projects-section" name="projects-section" class="content-card">
+        <h2>Projects</h2>
         <ul id="project-list">
           <li class="project-card">
             <h3>Pique Recipes</h3>
@@ -147,16 +146,35 @@
         </ul>
       </div>
       
-      <div class="content-card">
-        <h2 id="gallery-section">Gallery</h2>
+      <div id="gallery-section" name="gallery-section" class="content-card">
+        <h2>Gallery</h2>
         <img src="images/gallery/pic-1.jpg" id="gallery-img" />
         <br>
         <button onclick="prevImage()" id="prev-button"> Previous</button>
         <button onclick="nextImage()" id="next-button"> Next</button>
       </div>
 
-      <div class="content-card">
-        <h2 id="comments-section">Comments</h2>
+      <div id="map-section" name="map-section" class="content-card">
+        <h2>Tropical Storm Landfall Map</h2>
+        <div id="map"></div>
+        <p>
+          To practice using the Google Maps JavaScript API I decided to make a
+          map using tropical storm data. This map shows the path of tropical 
+          storms when they were at landfall. The tropical storms 3 years prior 
+          to June 2020 are represented. The dataset uses a dataset from
+          <a href="https://www.ncdc.noaa.gov/ibtracs/index.php">IBTrACS</a>. I 
+          processed the data using Jupyter and R to fit my needs. Enjoy!
+        </p>
+        <p>
+          Also checkout 
+          <a href="https://coast.noaa.gov/hurricanes/">
+            NOAA's Historical Hurricane Tracks
+          </a>
+        </p>
+      </div>
+
+      <div id="comments-section" name="comments-section" class="content-card">
+        <h2>Comments</h2>
         
         <div class="comment-area">
           <form action="/data" method="post" id="comment-form">
@@ -188,6 +206,7 @@
       </div>
 
     <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBzTxLbr79LWhHPOZJnUfeFuF6ddxGK9yY&callback=initializeMap"
+    async defer></script>  
   </body>
-
 </html>

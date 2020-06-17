@@ -13,12 +13,16 @@
 // limitations under the License.
 
 let imageIndex = 1;
+let map;
 
-window.onload = function() {
+/**
+ * Initialization function
+ */
+window.onload = function () {
   handleCommentFormVisibility();
   initializeAuth();
   fetchComments();
-  document.getElementById("comment-input").oninput = function() {
+  document.getElementById("comment-input").oninput = function () {
     const commentCharactersLabel = document.getElementById(
       "comment-character-count"
     );
@@ -118,31 +122,6 @@ function createCommentItem(author, timestamp, content) {
 }
 
 /**
- * Sends request to remove all comments
- */
-function deleteAllComments() {
-  window.confirm("Are you sure you want to delete all the comments?");
-
-  var passwordConfirmation =
-    "911b0a07a8cacfebc5f1f45596d67017136c950499fa5b4" +
-    "ff6faffa031f3cec7f197853d1660712c154e1f59c60f682e34ea9b5cbd2d8d5" +
-    "adb0c834f963f30de";
-  var password = window.prompt(
-    "Please enter the pasword to confirm you have the POWWEEER to delete ALL COMMENTS!!!!!!!!!!!"
-  );
-
-  if (password !== confirmpss) {
-    window.alert("WRONG PASSWORD!");
-    return;
-  }
-
-  const request = new Request("/delete-data", { method: "POST" });
-  const removeCommentsPromise = fetch(request);
-
-  removeCommentsPromise.then(fetchComments);
-}
-
-/**
  * Changes source of gallery image view to the next image
  */
 function nextImage() {
@@ -213,5 +192,109 @@ function initializeAuth() {
         authButton.classList.add("login");
         authButton.classList.remove("logout");
       }
+    });
+}
+
+/**
+ * Creates the control component that shows information about tropical storms
+ * @param {HTMLDivElement} controlDiv
+ */
+function InfoControl(controlDiv) {
+  let controlUI = document.createElement("div");
+  controlUI.classList.add("tropical-storm-info-control");
+  controlDiv.appendChild(controlUI);
+
+  let controlText = document.createElement("div");
+  controlText.textContent =
+      "Hover over a path to get info on the tropical storm.";
+  controlUI.appendChild(controlText);
+}
+
+function createMap() {
+  let newMap = new google.maps.Map(document.getElementById("map"), {
+    center: { lat: 37.4661449, lng: -96.5709606 },
+    zoom: 4,
+    disableDefaultUI: true,
+    styles: [
+      {
+        featureType: "poi",
+        stylers: [{ visibility: "off" }],
+      },
+      {
+        featureType: "transit",
+        stylers: [{ visibility: "off" }],
+      },
+      {
+        featureType: "road",
+        stylers: [{ visibility: "off" }],
+      },
+    ],
+  });
+
+  return newMap;
+}
+
+function drawPaths(map, tropicalStormData, infoControlDiv) {
+  Object.keys(tropicalStormData).forEach((tropicalStormID) => {
+    let tropicalStormPathCoords = [];
+
+    tropicalStormData[tropicalStormID].forEach((dataPoint) => {
+      tropicalStormPathCoords.push({
+        lat: dataPoint["lat"],
+        lng: dataPoint["lon"],
+      });
+    });
+
+    let randomHue = Math.floor(Math.random() * 360) + 90;
+    let randomColor = `hsl(${randomHue}, 100%, 40%)`;
+
+    let tropicalStormPath = new google.maps.Polyline({
+      path: tropicalStormPathCoords,
+      geodesic: true,
+      strokeColor: randomColor,
+      strokeOpacity: 0.75,
+      strokeWeight: 8,
+      map: map,
+    });
+
+    /*
+    Event handling to "highlight" a hurricane path and displaying its info
+    */
+    let firstTropicalStormDataPoint = tropicalStormData[tropicalStormID][0];
+    let infoControl = infoControlDiv.firstChild;
+    google.maps.event.addListener(tropicalStormPath, "mouseover", function () {
+      infoControl.textContent = `${firstTropicalStormDataPoint["name"]} ${firstTropicalStormDataPoint["season"]} | First Landfall on ${firstTropicalStormDataPoint["date"]} | ID:${tropicalStormID}`;
+      this.setOptions({
+        strokeOpacity: 1,
+        strokeWeight: 10,
+      });
+    });
+    google.maps.event.addListener(tropicalStormPath, "mouseout", function () {
+      infoControl.textContent =
+        "Hover over a path to get info on the tropical storm.";
+      this.setOptions({
+        strokeOpacity: 0.75,
+        strokeWeight: 8,
+      });
+    });
+  });
+}
+
+/**
+ * Generates a map from Google Map API
+ */
+function initializeMap() {
+  fetch("/tropical-storm-data")
+    .then((response) => response.json())
+    .then((tropicalStormData) => {
+      map = createMap();
+
+      let infoControlDiv = document.createElement("div");
+      let infoControl = new InfoControl(infoControlDiv, map);
+
+      infoControlDiv.index = 1;
+      map.controls[google.maps.ControlPosition.TOP_CENTER].push(infoControlDiv);
+
+      drawPaths(map, tropicalStormData, infoControlDiv);
     });
 }

@@ -14,20 +14,23 @@
 
 package com.google.sps.data;
 
-public final class Comment {
+/** This class represents landfall data of a tropical storm */
+public class TropicalStorm {
 
-  private final long id;
-  private final long timestamp;
-  private final String authorName;
-  private final String authorEmail;
-  private final String content;
+  private final String ID;
+  private final int season;
+  private final String name;
+  private final String date;
+  private final double lat;
+  private final double lng;
 
-  public Comment(long id, long timestamp, String authorName, String authorEmail, String content) {
-    this.id = id;
-    this.timestamp = timestamp;
-    this.authorName = authorName;
-    this.authorEmail = authorEmail;
-    this.content = content;
+  public TropicalStorm(String ID, int season, String name, String date, double lat, double lng) {
+    this.ID = ID;
+    this.season = season;
+    this.name = name;
+    this.date = date;
+    this.lat = lat;
+    this.lng = lng;
   }
   
 }
