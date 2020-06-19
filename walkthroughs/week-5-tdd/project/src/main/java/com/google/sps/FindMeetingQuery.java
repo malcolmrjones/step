@@ -19,6 +19,27 @@ import java.util.Collection;
 
 public final class FindMeetingQuery {
   public Collection<TimeRange> query(Collection<Event> events, MeetingRequest request) {
+    ArrayList<TimeRange> availableTimesForMandatoryAttendeesOnly =
+      getAvailableTimes(events, request, request.getAttendees());
+    ArrayList<TimeRange> availableTimesForOptionalAttendeesOnly = 
+      getAvailableTimes(events, request, request.getOptionalAttendees());
+    
+    ArrayList<TimeRange> availableTimesForAllAttendees = 
+      new ArrayList<TimeRange>(availableTimesForMandatoryAttendeesOnly);
+    availableTimesForAllAttendees.retainAll(availableTimesForOptionalAttendeesOnly);
+
+    if(availableTimesForAllAttendees.size() > 0) return availableTimesForAllAttendees;
+
+    if(request.getAttendees().size() == 0 && request.getOptionalAttendees().size() > 0) {
+      return availableTimesForOptionalAttendeesOnly;
+    }
+
+    return availableTimesForMandatoryAttendeesOnly;
+    
+  }
+
+
+  private ArrayList<TimeRange> getAvailableTimes(Collection<Event> events, MeetingRequest request, Collection<String> attendees) {
 
     if(request.getDuration() > TimeRange.WHOLE_DAY.duration()) return new ArrayList<TimeRange>();
 
@@ -29,7 +50,7 @@ public final class FindMeetingQuery {
 
       boolean eventHasMeetingAttendee = false;
       for(String eventAttendee : event.getAttendees()) {
-        if(request.getAttendees().contains(eventAttendee)) {
+        if(attendees.contains(eventAttendee)) {
           eventHasMeetingAttendee = true;
           break;
         }
